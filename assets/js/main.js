@@ -46472,16 +46472,28 @@ var ChartCard = function (_Component) {
 					},
 					chartOptions: {
 						animation: {
-							easing: 'easeInOutBack',
-							duration: 1200
+							easing: 'easeOutBack',
+							duration: 600
+						},
+						tooltips: {
+							caretPadding: 9,
+							caretSize: 6,
+							cornerRadius: 3,
+							bodySpacing: 12,
+							displayColors: false,
+							bodyFontSize: 15,
+							titleFontSize: 12,
+							titleFontStyle: 'normal',
+							titleFontColor: 'rgba(220,220,220,0.8)'
 						},
 						scales: {
 							yAxes: [{
 								ticks: {
-									fontColor: "rgba(95,95,95,0.5)",
-									fontStyle: "bold",
+									fontSize: 11,
+									fontColor: 'rgba(95,95,95,0.33)',
+									fontStyle: 'bold',
 									maxTicksLimit: 4,
-									padding: 12,
+									padding: 6,
 									callback: function callback(value, index, values) {
 										if (_this.props.title == 'Bitcoins in Circulation') {
 											return (0, _numeral2.default)(value).format('0.0a').toUpperCase();
@@ -46489,18 +46501,23 @@ var ChartCard = function (_Component) {
 											return (0, _numeral2.default)(value).format('$0.0a').toUpperCase();
 										}
 									}
-								}
-							}],
-							xAxes: [{
-								ticks: {
-									fontColor: "rgba(95,95,95,0.5)",
-									fontStyle: "bold",
-									maxTicksLimit: 8,
-									padding: 12
 								},
 								gridLines: {
 									drawTicks: false,
 									display: false
+								}
+							}],
+							xAxes: [{
+								ticks: {
+									maxRotation: 0,
+									fontStyle: "bold",
+									fontSize: 11,
+									fontColor: "rgba(95,95,95,0.33)",
+									maxTicksLimit: 6,
+									padding: 12,
+									callback: function callback(value, index, values) {
+										return value.toUpperCase();
+									}
 								}
 							}]
 						}
@@ -46509,7 +46526,7 @@ var ChartCard = function (_Component) {
 						labels: data.transformedValues[0],
 						datasets: [{
 							label: _this.props.title,
-							lineTension: 0.1,
+							lineTension: 0.2,
 							borderColor: '#B2DEF4',
 							backgroundColor: 'rgba(178, 222, 244, .4)',
 							borderCapStyle: 'butt',
@@ -46554,7 +46571,7 @@ var ChartCard = function (_Component) {
 			var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 			var month = months[a.getMonth()];
 			var date = a.getDate();
-			var time = date + ' ' + month;
+			var time = month + ' ' + date;
 			return time;
 		};
 
@@ -46580,7 +46597,7 @@ var ChartCard = function (_Component) {
 
 			var classnames = (0, _classnames2.default)({
 				'card': true,
-				'card--show': true
+				'card--lg': true
 			});
 
 			return _react2.default.createElement(
@@ -46600,7 +46617,7 @@ var ChartCard = function (_Component) {
 						null,
 						body
 					)
-				) : _react2.default.createElement(_LoadingCard2.default, null)
+				) : _react2.default.createElement(_LoadingCard2.default, { large: "true" })
 			);
 		}
 	}]);
@@ -46722,8 +46739,6 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -46742,11 +46757,13 @@ var LoadingCard = function (_Component) {
 	_createClass(LoadingCard, [{
 		key: "render",
 		value: function render() {
-			_objectDestructuringEmpty(this.props);
+			var large = this.props.large;
+
 
 			var classnames = (0, _classnames2.default)({
 				'card': true,
-				'card--loading': true
+				'card--loading': true,
+				'card--lg': large
 			});
 
 			return _react2.default.createElement(
@@ -46763,7 +46780,9 @@ var LoadingCard = function (_Component) {
 	return LoadingCard;
 }(_react.Component);
 
-LoadingCard.propTypes = {};
+LoadingCard.propTypes = {
+	large: _react.PropTypes.bool
+};
 exports.default = LoadingCard;
 
 },{"classnames":58,"react":391,"react-addons-css-transition-group":232}],398:[function(require,module,exports){
