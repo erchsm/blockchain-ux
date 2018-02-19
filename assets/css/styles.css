@@ -194,6 +194,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.icon-transaction:before {
+  content: "\EA01"; }
+
+.icon-memory:before {
+  content: "\EA02"; }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -281,17 +287,23 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.icon-transaction:before {
+  content: "\EA01"; }
+
+.icon-memory:before {
+  content: "\EA02"; }
+
 body {
   font-family: "Helvetica Neue", sans-serif;
   color: #5F5F5F; }
 
 h2 {
-  font-size: 48px;
+  font-size: 45px;
   font-weight: 100;
   letter-spacing: -0.006em; }
 
 h3 {
-  font-size: 48px;
+  font-size: 45px;
   color: #004A7C;
   line-height: 1;
   letter-spacing: -0.012em;
@@ -347,7 +359,7 @@ section h2 {
     .card__row h3 {
       margin-right: 9px; }
   .card h4 {
-    margin-bottom: 6px; }
+    margin-bottom: 9px; }
   .card canvas {
     margin-bottom: 24px; }
 
